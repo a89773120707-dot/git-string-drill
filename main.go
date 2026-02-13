@@ -13,6 +13,8 @@ func main() {
 
 	fmt.Println(ToUpperFirst("hello"))
 	fmt.Println(ToUpperFirst("anar"))
+
+	fmt.Println(CountVowles("aeiouy"))
 }
 
 func TrimAndUpper(s string) string {
@@ -26,4 +28,17 @@ func ToUpperFirst(s string) string {
 	}
 
 	return strings.ToUpper(string(s[0])) + s[1:]
+}
+
+func CountVowles(s string) int {
+	count := 0
+	lower := strings.ToLower(s)
+
+	for _, r := range lower {
+		switch r {
+		case 'a', 'e', 'i', 'o', 'u', 'y':
+			count++
+		}
+	}
+	return count
 }
