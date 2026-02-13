@@ -15,6 +15,9 @@ func main() {
 	fmt.Println(ToUpperFirst("anar"))
 
 	fmt.Println(CountVowles("aeiouy"))
+
+	fmt.Println(IsPalindrome("radar"))
+	fmt.Println(IsPalindrome("race a car"))
 }
 
 func TrimAndUpper(s string) string {
@@ -41,4 +44,25 @@ func CountVowles(s string) int {
 		}
 	}
 	return count
+}
+
+func IsPalindrome(s string) bool {
+	cleaned := ""
+	for _, r := range s {
+		if r != ' ' {
+			cleaned += string(r)
+		}
+	}
+
+	left, right := 0, len(cleaned)-1
+
+	for left < right {
+		if cleaned[left] != cleaned[right] {
+			return false
+		}
+		left++
+		right--
+	}
+	return true
+
 }
