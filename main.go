@@ -15,6 +15,8 @@ func main() {
 
 	fmt.Println(IsPalindrome("radar"))
 	fmt.Println(IsPalindrome("race a car"))
+
+	fmt.Println(ReverseWords("раз два  три    четыре"))
 }
 
 func ToUpperFirst(s string) string {
@@ -57,4 +59,17 @@ func IsPalindrome(s string) bool {
 	}
 	return true
 
+}
+
+// [ "Раз", "Два", "Три", "Четыре" ]
+func ReverseWords(s string) string {
+	if s == "" {
+		return ""
+	}
+	words := strings.Fields(s)
+	for i, j := 0, len(words)-1; i < j; i, j = i+1, j-1 {
+		words[i], words[j] = words[j], words[i]
+	}
+
+	return strings.Join(words, " ")
 }
