@@ -8,9 +8,6 @@ import (
 func main() {
 	fmt.Println("drill started")
 
-	fmt.Println(TrimAndUpper("   hello world   "))
-	fmt.Println(TrimAndUpper("   git init   "))
-
 	fmt.Println(ToUpperFirst("hello"))
 	fmt.Println(ToUpperFirst("anar"))
 
@@ -18,11 +15,6 @@ func main() {
 
 	fmt.Println(IsPalindrome("radar"))
 	fmt.Println(IsPalindrome("race a car"))
-}
-
-func TrimAndUpper(s string) string {
-	sTrim := strings.TrimSpace(strings.ToUpper(s))
-	return sTrim
 }
 
 func ToUpperFirst(s string) string {
