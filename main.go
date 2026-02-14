@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	"unicode"
 )
 
 func main() {
@@ -15,6 +16,9 @@ func main() {
 	fmt.Println(IsPalindrome("race a car"))
 
 	fmt.Println(ReverseWords("раз два  три    четыре"))
+
+	fmt.Println(IsPalindromeUnicode("привет "))
+	fmt.Println(IsPalindromeUnicode("прирп"))
 }
 
 func ToUpperFirst(s string) string {
@@ -57,4 +61,30 @@ func ReverseWords(s string) string {
 	}
 
 	return strings.Join(words, " ")
+}
+
+func IsPalindromeUnicode(s string) bool {
+	var runes []rune
+
+	for _, r := range s {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			lower := unicode.ToLower(r)
+			runes = append(runes, lower)
+		}
+	}
+
+	left, right := 0, len(runes)-1
+	for left < right {
+		if runes[left] != runes[right] {
+			return false
+		}
+
+		runes[left], runes[right] = runes[right], runes[left]
+
+		left++
+		right--
+	}
+
+	return true
+
 }
